@@ -1,12 +1,12 @@
-import { products } from "@/components/data/products";
-import ProductCart from "@/components/ProductCart";
+import ProductCard from "@/components/ProductCard";
+import { products } from "@/data/products";
 import { View } from "react-native";
 
-export default function catalog () {
+export default function Catalog () {
     return (
         <View>
             {products.map((p) => (
-                <ProductCart key={p.id} product={p} />
+                <ProductCard key={p.id} product={p} />
             ))}
         </View>
     )
