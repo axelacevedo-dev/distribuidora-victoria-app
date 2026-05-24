@@ -1,4 +1,5 @@
 import { Image } from "expo-image";
+import { router } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import { products } from "../data/products";
 import { Product } from "../types/Product";
@@ -7,9 +8,10 @@ import PrimaryButton from "./PrimaryButton";
 
 interface Props {
     product: Product;
+    onPress?: () => void;
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, onPress }: Props) {
     return (
         <View style={styles.container}>
             {products.map(p => (
@@ -19,7 +21,7 @@ export default function ProductCard({ product }: Props) {
                     <Text style={styles.description}> {p.description}</Text>
                     <Text style={styles.price}>${p.price}</Text>
                     <Text>{p.category}</Text>
-                    <PrimaryButton label="Personalizar" />
+                    <PrimaryButton label="Personalizar" onPress={() => router.push("./designer")}/>
                 </View>
             ))
             }
@@ -30,7 +32,7 @@ export default function ProductCard({ product }: Props) {
 const styles = StyleSheet.create({
     container:
     {
-        width:"100%",
+        width:"75%",
         marginBottom:10,
         padding: 15,
         backgroundColor: "white",
@@ -38,10 +40,10 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
         shadowOffset:{
             width: 0,
-            height:2,
+            height:3,
         },
         shadowOpacity:1.00,
-        shadowRadius: 3,
+        shadowRadius: 9,
         elevation: 4,
     },
     image: {
