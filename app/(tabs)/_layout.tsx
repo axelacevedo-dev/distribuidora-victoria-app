@@ -3,15 +3,25 @@ import { CatalogIcon, DesignerIcon, HomeIcon, ProfileIcon } from '@/components/i
 import { Colors } from '@/constants/colors';
 import { Tabs } from 'expo-router';
 
-
 export default function Layout() {
     return (
+        <>
         <Tabs
             screenOptions={{
                 tabBarActiveTintColor: Colors.primary,
                 tabBarInactiveTintColor: Colors.tabInactive,
+                headerShown: false,
                 tabBarStyle: {
-                    backgroundColor: Colors.background
+                    backgroundColor: "rgba(17,17,17,0.92)",
+                    position:"absolute",
+                    bottom:0,
+                    borderTopWidth:0,
+                    elevation:0,
+                    borderRadius: 30
+                },
+                tabBarLabelStyle:{
+                    fontSize:8,
+                    fontWeight: "900",
                 }
             }}>
             <Tabs.Screen
@@ -22,7 +32,7 @@ export default function Layout() {
                         <HomeIcon color={color} />
                     ),
                 }}
-            />
+                />
             <Tabs.Screen
                 name="catalog"
                 options={{
@@ -31,7 +41,7 @@ export default function Layout() {
                         <CatalogIcon color={color} />
                     ),
                 }}
-            />
+                />
             <Tabs.Screen
                 name='designer'
                 options={{
@@ -51,5 +61,6 @@ export default function Layout() {
                 }}
             />
         </Tabs>
+                </>
     )
 }

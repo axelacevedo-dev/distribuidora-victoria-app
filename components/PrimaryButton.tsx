@@ -1,37 +1,33 @@
+import { Colors } from "@/constants/colors";
 import { Pressable, StyleSheet, Text } from "react-native";
 
 interface Props {
     label: string;
     onPress?: () => void;
+    className?: string;
 }
 
-export default function PrimaryButton({ label, onPress }: Props) {
+export default function PrimaryButton({ label, onPress,className }: Props) {
     return (
-        <Pressable style={styles.button} onPress={onPress}>
-            <Text style={styles.text}>
-                { label }
+        <Pressable onPress={onPress} 
+        style={styles.buttonShadow}
+        className={`bg-primary rounded-3xl py-3 px-6 mt-4 active:opacity-80 active:scale-95 ${className}`}>
+            <Text className="text-white font-semibold ls-1 text-center tracking-wide text-lg">
+                {label}
             </Text>
-        </Pressable>
+        </Pressable >
     )
 }
 
 const styles = StyleSheet.create({
-    button: {
-        borderRadius: 12,
-        padding: 10,
-        borderWidth: 2,
-        borderColor: "#f48634",
-        shadowColor: "#f48634",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.4,
-        shadowRadius: 6,
-        marginTop: 20,
-        elevation: 6,
-    },
-    text: {
-
-        fontWeight: "600",
-        fontSize: 20,
-        color: "#f48634"
+    buttonShadow: {
+        shadowColor: Colors.primary,
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowRadius: 10,
+        shadowOpacity: 0.8
     }
+
 })
